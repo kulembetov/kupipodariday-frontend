@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/kupipodariday-frontend/static/css/main.2abca147.css",
+    "main.js": "/kupipodariday-frontend/static/js/main.51c5914c.js",
+    "static/js/787.dd9adbe6.chunk.js": "/kupipodariday-frontend/static/js/787.dd9adbe6.chunk.js",
+    "static/media/fashion.jpg": "/kupipodariday-frontend/static/media/fashion.2b195ec6b84e2e5f39c3.jpg",
+    "static/media/witches.jpg": "/kupipodariday-frontend/static/media/witches.da09170c5a5654781478.jpg",
+    "static/media/minimal.jpg": "/kupipodariday-frontend/static/media/minimal.aecbca4c18c3635fbfba.jpg",
+    "static/media/director.jpg": "/kupipodariday-frontend/static/media/director.a33ac0e65795a2390678.jpg",
+    "static/media/music.jpg": "/kupipodariday-frontend/static/media/music.1a19ce8990f9dfb088c2.jpg",
+    "static/media/home.jpg": "/kupipodariday-frontend/static/media/home.01b0b35f24f4a8605710.jpg",
+    "static/media/logo.svg": "/kupipodariday-frontend/static/media/logo.7f0b36c40ecb3f30babab7b5ef9d39f7.svg",
+    "static/media/no-preview.svg": "/kupipodariday-frontend/static/media/no-preview.4f5e329a17d67464bb003b20b0c69bf4.svg",
+    "static/media/gift.svg": "/kupipodariday-frontend/static/media/gift.04021b32652030bc36ec4d0ca9702345.svg",
+    "static/media/attach.svg": "/kupipodariday-frontend/static/media/attach.4459d663b3ec666d644e.svg",
+    "static/media/profile.svg": "/kupipodariday-frontend/static/media/profile.975de3fa94cf37ac2be0864cb5cc8203.svg",
+    "static/media/trash-red.svg": "/kupipodariday-frontend/static/media/trash-red.591bd0c1187d6b44dae45b7c4e382238.svg",
+    "static/media/like.svg": "/kupipodariday-frontend/static/media/like.309240cefd440a6dc742d7e8cd8639e9.svg",
+    "static/media/preview.svg": "/kupipodariday-frontend/static/media/preview.5ad5957ca040e321f268370c25aa8604.svg",
+    "static/media/logo-mini.svg": "/kupipodariday-frontend/static/media/logo-mini.086907305dae5c2927c7270e8513b2e9.svg",
+    "index.html": "/kupipodariday-frontend/index.html",
+    "static/media/cancel.svg": "/kupipodariday-frontend/static/media/cancel.a57de2861c049525d493e3c3da95f150.svg",
+    "main.2abca147.css.map": "/kupipodariday-frontend/static/css/main.2abca147.css.map",
+    "main.51c5914c.js.map": "/kupipodariday-frontend/static/js/main.51c5914c.js.map",
+    "787.dd9adbe6.chunk.js.map": "/kupipodariday-frontend/static/js/787.dd9adbe6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2abca147.css",
+    "static/js/main.51c5914c.js"
+  ]
+}
