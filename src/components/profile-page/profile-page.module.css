@@ -38,7 +38,7 @@
 }
 
 .caption {
-  opacity: .6;
+  opacity: 0.6;
   text-align: right;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .file_input {
-  background: url("../../images/icons/attach.svg") no-repeat scroll 508px 12px;
+  background: url('../../images/icons/attach.svg') no-repeat scroll 508px 12px;
   background-color: var(--grey-color-3);
   width: 100%;
   padding: 12px 16px;
@@ -59,7 +59,7 @@
 
 .success_message {
   color: green;
-  opacity: .8;
+  opacity: 0.8;
   margin-top: 10px;
   text-align: center;
   margin-top: 0;
@@ -68,7 +68,7 @@
 
 .fail_message {
   color: red;
-  opacity: .8;
+  opacity: 0.8;
   margin-top: 10px;
   text-align: center;
   margin-top: 0;

@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { GoodCard } from "../good-card";
+import { GoodCard } from '../good-card';
 
-import { getCollection } from "../../utils/api";
+import { getCollection } from '../../utils/api';
 
-import { UserContext } from "../../utils/context";
+import { UserContext } from '../../utils/context';
 
-import styles from "./collection.module.css";
+import styles from './collection.module.css';
 
-export const Collection = ({ extraClass = "" }) => {
+export const Collection = ({ extraClass = '' }) => {
   const [user] = useContext(UserContext);
   const [data, setData] = useState({});
   // const [pagData, setPagData] = useState({});
@@ -18,8 +18,8 @@ export const Collection = ({ extraClass = "" }) => {
 
   useEffect(() => {
     getCollection(id)
-      .then((res) => setData(res))
-      .catch((err) => console.log(err));
+      .then(res => setData(res))
+      .catch(err => console.log(err));
   }, []);
 
   return (
@@ -29,7 +29,7 @@ export const Collection = ({ extraClass = "" }) => {
           {data.name}
         </h2>
         <div className={styles.cards_box}>
-          {data.items?.map((card) => {
+          {data.items?.map(card => {
             return (
               <GoodCard
                 id={card.id}

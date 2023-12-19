@@ -1,11 +1,11 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { Button } from "../ui";
+import { Button } from '../ui';
 
-import styles from "./user-search-card.module.css";
+import styles from './user-search-card.module.css';
 
-export const UserSearchCard = ({ name = "", img, extraClass = "" }) => {
+export const UserSearchCard = ({ name = '', img, extraClass = '' }) => {
   const history = useHistory();
 
   const onClick = () => {

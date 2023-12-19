@@ -1,18 +1,14 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import styles from "./recovery-password.module.css";
-import { Input } from "../ui/input/input";
-import { NavLink } from "react-router-dom";
-import { getUser, loginUser } from "../../utils/api";
-import { Button } from "../ui/button/button";
+import React from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import { Button } from '../ui/button/button';
+import { Input } from '../ui/input/input';
+import styles from './recovery-password.module.css';
 
-export const RecoveryPassword = ({ extraClass = "" }) => {
+export const RecoveryPassword = ({ extraClass = '' }) => {
   const [userData, setUserData] = React.useState({});
   const [step, setStep] = React.useState(1);
 
-  const history = useHistory();
-
-  const onChangeInput = (e) => {
+  const onChangeInput = e => {
     setUserData({
       ...userData,
       [e.target.name]: e.target.value,
@@ -23,15 +19,6 @@ export const RecoveryPassword = ({ extraClass = "" }) => {
     if (step === 1) {
       setStep(2);
     }
-    // loginUser(userData.username, userData.password).then((res) => {
-    //   if (res && res.auth_token) {
-    //     getUser().then((res) => {
-    //       if (res && res.id) {
-    //         history.replace({ pathname: "/" });
-    //       }
-    //     });
-    //   }
-    // });
   };
 
   return (
@@ -75,7 +62,7 @@ export const RecoveryPassword = ({ extraClass = "" }) => {
         <Button
           type="button"
           kind="secondary"
-          text={`${step === 1 ? "Восстановить" : "Сохранить"}`}
+          text={`${step === 1 ? 'Восстановить' : 'Сохранить'}`}
           extraClass={styles.btn}
           onClick={handleSubmit}
         />

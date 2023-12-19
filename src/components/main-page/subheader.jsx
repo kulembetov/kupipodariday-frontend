@@ -1,19 +1,19 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { useHistory, Route } from "react-router-dom";
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useHistory, Route } from 'react-router-dom';
 
-import { Button, ButtonReturn } from "../ui";
+import { Button, ButtonReturn } from '../ui';
 
-import styles from "./main-page.module.css";
+import styles from './main-page.module.css';
 
 export const Subheader = ({ path, isLogin }) => {
   const { pathname } = useLocation();
-  const [, , tab] = pathname.split("/");
+  const [, , tab] = pathname.split('/');
   const [activeTab, setActiveTab] = useState(tab);
   const history = useHistory();
 
-  const onTabsClick = (e) => {
-    const name = e.target.name ?? e.target.closest("button").name;
+  const onTabsClick = e => {
+    const name = e.target.name ?? e.target.closest('button').name;
     history.push(`/gifts/${name}`);
     setActiveTab(name);
   };
@@ -30,7 +30,7 @@ export const Subheader = ({ path, isLogin }) => {
       </h1>
       <div className={styles.tabs}>
         <Button
-          kind={activeTab === "line" ? "secondary" : "tab"}
+          kind={activeTab === 'line' ? 'secondary' : 'tab'}
           type="button"
           name="line"
           text="Лента"
@@ -38,7 +38,7 @@ export const Subheader = ({ path, isLogin }) => {
           onClick={onTabsClick}
         />
         <Button
-          kind={activeTab === "collections" ? "secondary" : "tab"}
+          kind={activeTab === 'collections' ? 'secondary' : 'tab'}
           type="button"
           name="collections"
           text="Коллекции"

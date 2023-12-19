@@ -1,29 +1,29 @@
-import { useContext, useState } from "react";
+import { useContext, useState } from 'react';
 
-import { UserContext } from "../../utils/context";
-import { Button, Input, Textarea } from "../ui";
+import { UserContext } from '../../utils/context';
+import { Button, Input, Textarea } from '../ui';
 
-import { updateProfile, refreshUser } from "../../utils/api";
+import { updateProfile, refreshUser } from '../../utils/api';
 
 import {
   MAXIMUM_DESCRIPTION_LENGTH,
   MAXIMUM_USERNAME_LENGTH,
-} from "../../utils/constants";
+} from '../../utils/constants';
 
-import styles from "./profile-page.module.css";
+import styles from './profile-page.module.css';
 
-export const ProfilePage = ({ extraClass = "" }) => {
+export const ProfilePage = ({ extraClass = '' }) => {
   const [userCtx, setUserCtx] = useContext(UserContext);
   const [profileData, setProfileData] = useState({});
   const [personalData, setPersonalData] = useState({});
   const [updateMessages, setUpdateMessages] = useState({
-    successProfile: "",
-    successPersonal: "",
-    failProfile: "",
-    failPersonal: "",
+    successProfile: '',
+    successPersonal: '',
+    failProfile: '',
+    failPersonal: '',
   });
 
-  const changeProfileData = (event) => {
+  const changeProfileData = event => {
     const field = event.target.name;
 
     setProfileData({
@@ -32,7 +32,7 @@ export const ProfilePage = ({ extraClass = "" }) => {
     });
   };
 
-  const changePersonalData = (event) => {
+  const changePersonalData = event => {
     const field = event.target.name;
 
     setPersonalData({
@@ -41,41 +41,41 @@ export const ProfilePage = ({ extraClass = "" }) => {
     });
   };
 
-  const submitFormData = (event) => {
+  const submitFormData = event => {
     const { value: submitKey } = event.nativeEvent.submitter;
     event.preventDefault();
 
     setUpdateMessages({
-      successProfile: "",
-      successPersonal: "",
-      failProfile: "",
-      failPersonal: "",
+      successProfile: '',
+      successPersonal: '',
+      failProfile: '',
+      failPersonal: '',
     });
 
-    if (submitKey === "profileData") {
+    if (submitKey === 'profileData') {
       updateProfile(profileData)
         .then(() => {
           refreshUser(setUserCtx);
           setUpdateMessages({
-            successProfile: "Изменения успешно сохранены!",
+            successProfile: 'Изменения успешно сохранены!',
           });
         })
-        .catch((err) => {
+        .catch(err => {
           setUpdateMessages({
             failProfile: err.message,
           });
         });
     }
 
-    if (submitKey === "personalData") {
+    if (submitKey === 'personalData') {
       updateProfile(personalData)
         .then(() => {
           refreshUser(setUserCtx);
           setUpdateMessages({
-            successPersonal: "Изменения успешно сохранены!",
+            successPersonal: 'Изменения успешно сохранены!',
           });
         })
-        .catch((err) => {
+        .catch(err => {
           setUpdateMessages({
             failPersonal: err.message,
           });
@@ -170,7 +170,7 @@ export const ProfilePage = ({ extraClass = "" }) => {
           type="text"
           id={5}
           placeholder="username"
-          label="Юзернейм"
+          label="Имя пользователя"
           onChange={changePersonalData}
           extraClass="mb-16"
           defaultValue={userCtx.username}

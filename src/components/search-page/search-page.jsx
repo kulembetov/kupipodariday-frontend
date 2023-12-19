@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { UserSearchCard } from "../user-search-card";
+import { UserSearchCard } from '../user-search-card';
 
-import styles from "./search-page.module.css";
+import styles from './search-page.module.css';
 
-export const SearchPage = ({ extraClass = "", queryHits }) => {
+export const SearchPage = ({ extraClass = '', queryHits }) => {
   const hitsCount = queryHits.hits.length || 0;
 
   return (
@@ -26,16 +26,16 @@ export const SearchPage = ({ extraClass = "", queryHits }) => {
   );
 };
 
-const pluralize = (count) => {
-  const resultsArr = ["результат", "результата", "результатов"];
+const pluralize = count => {
+  const resultsArr = ['результат', 'результата', 'результатов'];
   const meaningfulDigit = count % 10;
 
   const pluralizer =
     meaningfulDigit === 1
       ? resultsArr[0]
       : meaningfulDigit > 1 && meaningfulDigit < 5
-      ? resultsArr[1]
-      : resultsArr[2];
+        ? resultsArr[1]
+        : resultsArr[2];
 
   return pluralizer;
 };

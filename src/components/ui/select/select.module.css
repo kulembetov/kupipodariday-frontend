@@ -6,7 +6,7 @@
 }
 
 .label {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .select {
@@ -29,7 +29,7 @@
 }
 
 select::placeholder {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -38,5 +38,5 @@ select::placeholder {
 }
 
 .error {
-  opacity: .6;
+  opacity: 0.6;
 }

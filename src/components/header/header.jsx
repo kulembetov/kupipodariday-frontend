@@ -1,23 +1,23 @@
-import { useState, useContext, useRef } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useState, useContext, useRef } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 
-import { Button } from "../ui/button/button";
-import { Textarea } from "../ui";
-import { Modal } from "../ui/modal/modal";
-import { Input } from "../ui/input/input";
+import { Button } from '../ui/button/button';
+import { Textarea } from '../ui';
+import { Modal } from '../ui/modal/modal';
+import { Input } from '../ui/input/input';
 
-import logo from "../../images/icons/logo.svg";
-import giftIcon from "../../images/icons/gift.svg";
-import likeIcon from "../../images/icons/like.svg";
-import profileIcon from "../../images/icons/profile.svg";
+import logo from '../../images/icons/logo.svg';
+import giftIcon from '../../images/icons/gift.svg';
+import likeIcon from '../../images/icons/like.svg';
+import profileIcon from '../../images/icons/profile.svg';
 
-import { pluckEmptyFormFields } from "../../utils/functions";
-import { logoutUser, createCard } from "../../utils/api";
-import { UserContext } from "../../utils/context";
+import { pluckEmptyFormFields } from '../../utils/functions';
+import { logoutUser, createCard } from '../../utils/api';
+import { UserContext } from '../../utils/context';
 
-import styles from "./header.module.css";
+import styles from './header.module.css';
 
-export const Header = ({ extraClass = "" }) => {
+export const Header = ({ extraClass = '' }) => {
   const [userCtx, setUserCtx] = useContext(UserContext);
   const [isProfilePopupOpen, setIsProfilePopupOpen] = useState(false);
   const [isGiftPopupOpen, setIsGiftPopupOpen] = useState(false);
@@ -29,7 +29,7 @@ export const Header = ({ extraClass = "" }) => {
     if (isLoggedIn) {
       handleGiftPopupOpen();
     } else {
-      history.push("/signin");
+      history.push('/signin');
     }
   };
 
@@ -50,7 +50,7 @@ export const Header = ({ extraClass = "" }) => {
     logoutUser();
     setUserCtx({});
     handlePopupClose();
-    history.push({ pathname: "/" });
+    history.push({ pathname: '/' });
   };
 
   return (
@@ -67,7 +67,7 @@ export const Header = ({ extraClass = "" }) => {
       <Button
         type="button"
         kind="primary"
-        text={`${isLoggedIn ? "Добавить подарок" : "Войти в профиль"}`}
+        text={`${isLoggedIn ? 'Добавить подарок' : 'Войти в профиль'}`}
         onClick={onSubmit}
       />
       {isProfilePopupOpen && (
@@ -81,7 +81,7 @@ export const Header = ({ extraClass = "" }) => {
 const HeaderLinks = ({ handleProfilePopupOpen, userName }) => {
   const profileLabel = userName ? `Профиль ${userName}` : `Профиль`;
 
-  const setInactive = (isActive) => {
+  const setInactive = isActive => {
     const inactiveClassName = `${styles.nav} ${styles.nav_inactive}`;
 
     return isActive ? inactiveClassName : styles.nav;
@@ -122,23 +122,23 @@ const GiftAddModal = ({ onClose }) => {
 
   const formRef = useRef(null);
 
-  const submitGift = (e) => {
+  const submitGift = e => {
     e.preventDefault();
     const plucked = pluckEmptyFormFields(giftData);
     createCard(plucked).then(() => {
       onClose();
-      history.replace({ pathname: "/wishlist" });
+      history.replace({ pathname: '/wishlist' });
     });
   };
 
-  const onFormChange = (e) => {
+  const onFormChange = e => {
     e.preventDefault();
     const isValid = formRef.current.checkValidity();
     setValid(isValid);
     setGiftData({
       ...giftData,
       [e.target.name]:
-        e.target.name === "price" ? parseInt(e.target.value) : e.target.value,
+        e.target.name === 'price' ? parseInt(e.target.value) : e.target.value,
     });
   };
 

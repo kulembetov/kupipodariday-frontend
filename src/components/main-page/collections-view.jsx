@@ -1,31 +1,31 @@
-import { useState, useEffect, useRef, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect, useRef, useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 
-import { Button, Input, Modal } from "../ui";
+import { Button, Input, Modal } from '../ui';
 
-import trashIcon from "../../images/icons/trash-red.svg";
+import trashIcon from '../../images/icons/trash-red.svg';
 
-import { UserContext } from "../../utils/context";
+import { UserContext } from '../../utils/context';
 
 import {
   addCollection,
   deleteCollection,
   getCollections,
-} from "../../utils/api";
+} from '../../utils/api';
 
-import styles from "./main-page.module.css";
+import styles from './main-page.module.css';
 
 export const CollectionsView = ({ url, ownWishes }) => {
   const [isCollectionPopupOpen, setIsCollectionPopupOpen] = useState(false);
   const [isRemovePopupOpen, setIsRemovePopupOpen] = useState(false);
-  const [idToRemove, setIdToRemove] = useState("");
+  const [idToRemove, setIdToRemove] = useState('');
   const [collectionsList, setCollectionsList] = useState([]);
-  const [errorRemoveMessage, setErrorRemoveMessage] = useState("");
+  const [errorRemoveMessage, setErrorRemoveMessage] = useState('');
 
   const [user] = useContext(UserContext);
 
   useEffect(() => {
-    getCollections().then((res) => setCollectionsList(res));
+    getCollections().then(res => setCollectionsList(res));
   }, []);
 
   const handleCollectionPopupOpen = () => {
@@ -35,24 +35,24 @@ export const CollectionsView = ({ url, ownWishes }) => {
   const handlePopupClose = () => {
     isCollectionPopupOpen && setIsCollectionPopupOpen(false);
     isRemovePopupOpen && setIsRemovePopupOpen(false);
-    errorRemoveMessage && setErrorRemoveMessage("");
+    errorRemoveMessage && setErrorRemoveMessage('');
   };
 
-  const handleRemoveClick = (e) => {
+  const handleRemoveClick = e => {
     e.preventDefault();
-    setIdToRemove(e.target.closest("a").name);
+    setIdToRemove(e.target.closest('a').name);
     setIsRemovePopupOpen(true);
   };
 
   const handleRemoveCollection = () => {
     deleteCollection(idToRemove)
       .then(() => {
-        getCollections().then((res) => {
+        getCollections().then(res => {
           setCollectionsList(res);
           handlePopupClose();
         });
       })
-      .catch((err) => setErrorRemoveMessage(err.message));
+      .catch(err => setErrorRemoveMessage(err.message));
   };
 
   return (
@@ -63,7 +63,7 @@ export const CollectionsView = ({ url, ownWishes }) => {
         onClick={handleCollectionPopupOpen}
       />
       <div className={styles.cards_box}>
-        {collectionsList.map((card) => {
+        {collectionsList.map(card => {
           return (
             <NavLink
               key={card.id}
@@ -138,13 +138,13 @@ const CollectionAddModal = ({
 }) => {
   const [collectionData, setCollectionData] = useState({ wishes: {} });
   const [valid, setValid] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const formRef = useRef(null);
 
-  const submitCollection = (e) => {
+  const submitCollection = e => {
     e.preventDefault();
-    errorMessage && setErrorMessage("");
+    errorMessage && setErrorMessage('');
 
     const { name, image } = collectionData;
     const itemsId = Object.entries(collectionData.wishes).map(([key, val]) => {
@@ -154,25 +154,25 @@ const CollectionAddModal = ({
     });
 
     addCollection({ name, image, itemsId })
-      .then((res) => {
+      .then(res => {
         const { name, image, id, owner } = res;
         setCollectionsList([...collectionsList, { name, image, id, owner }]);
         onClose();
       })
-      .catch((err) => {
+      .catch(err => {
         setErrorMessage(err.message);
       });
   };
 
-  const onFormChange = (e) => {
+  const onFormChange = e => {
     const isValid = formRef.current.checkValidity();
     setValid(isValid);
 
     const name = e.target.name;
     const value = e.target.value;
 
-    if (name.startsWith("wish")) {
-      const [, key] = name.split(" ");
+    if (name.startsWith('wish')) {
+      const [, key] = name.split(' ');
       setCollectionData({
         ...collectionData,
         wishes: {
@@ -183,7 +183,7 @@ const CollectionAddModal = ({
     } else {
       setCollectionData({
         ...collectionData,
-        [name]: name === "price" ? parseInt(value) : value,
+        [name]: name === 'price' ? parseInt(value) : value,
       });
     }
   };
@@ -225,7 +225,7 @@ const CollectionAddModal = ({
           Выберите товары из вашего вишлиста:
         </p>
         <div className={styles.wishes}>
-          {ownWishes.map((item) => {
+          {ownWishes.map(item => {
             return (
               <div key={item.id} className="mb-4">
                 <input

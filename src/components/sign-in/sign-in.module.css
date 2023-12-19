@@ -22,7 +22,7 @@
 }
 
 .text {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .nav {
@@ -37,6 +37,6 @@
 
 .error {
   color: red;
-  opacity: .8;
+  opacity: 0.8;
   margin-top: 10px;
 }

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import styles from "./textarea.module.css";
+import styles from './textarea.module.css';
 
 export const Textarea = ({
-  extraClass = "",
-  extraInputClass = "",
+  extraClass = '',
+  extraInputClass = '',
   id,
   error,
   label,

@@ -1,18 +1,18 @@
-import { useState, useEffect, useContext } from "react";
-import { Route, useRouteMatch, useLocation, Redirect } from "react-router-dom";
+import { useState, useEffect, useContext } from 'react';
+import { Route, useRouteMatch, useLocation, Redirect } from 'react-router-dom';
 
-import { Collection } from "../collection";
-import { Subheader } from "./subheader";
-import { CollectionsView } from "./collections-view";
-import { CardListView } from "./card-lists-view";
+import { Collection } from '../collection';
+import { Subheader } from './subheader';
+import { CollectionsView } from './collections-view';
+import { CardListView } from './card-lists-view';
 
-import { getLastCards, getOwnWishes, getTopCards } from "../../utils/api";
-import { findOwnedIds } from "../../utils/functions";
-import { UserContext } from "../../utils/context";
+import { getLastCards, getOwnWishes, getTopCards } from '../../utils/api';
+import { findOwnedIds } from '../../utils/functions';
+import { UserContext } from '../../utils/context';
 
-import styles from "./main-page.module.css";
+import styles from './main-page.module.css';
 
-export const MainPage = ({ extraClass = "" }) => {
+export const MainPage = ({ extraClass = '' }) => {
   const [user] = useContext(UserContext);
   const [lastCards, setLastCards] = useState([]);
   const [topCards, setTopCards] = useState([]);

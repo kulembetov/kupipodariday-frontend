@@ -1,17 +1,17 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import closeIcon from "../../../images/icons/cancel.svg";
+import closeIcon from '../../../images/icons/cancel.svg';
 
-import styles from "./modal.module.css";
+import styles from './modal.module.css';
 
-const modalRoot = document.getElementById("react-modals");
+const modalRoot = document.getElementById('react-modals');
 
 export const Modal = ({
   children,
   onClose,
   isCloseBtn = false,
-  extraClass = "",
+  extraClass = '',
 }) => {
   return ReactDOM.createPortal(
     <>

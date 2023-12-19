@@ -54,11 +54,11 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 272px 192px 192px;
   grid-template-areas:
-    "fashion fashion fashion fashion fashion fashion fashion fashion fashion witches witches witches"
-    "director director director home home home music music music witches witches witches"
-    "minimal minimal minimal minimal . . . . . . . .";
-    gap: 32px;
-    margin-bottom: 110px;
+    'fashion fashion fashion fashion fashion fashion fashion fashion fashion witches witches witches'
+    'director director director home home home music music music witches witches witches'
+    'minimal minimal minimal minimal . . . . . . . .';
+  gap: 32px;
+  margin-bottom: 110px;
 }
 
 .card {
@@ -67,36 +67,36 @@
 
 .fashion {
   display: block;
-  background-image: url("../../images/fashion.jpg");
+  background-image: url('../../images/fashion.jpg');
   grid-area: fashion;
 }
 
 .witches {
   display: block;
-  background-image: url("../../images/witches.jpg");
+  background-image: url('../../images/witches.jpg');
   grid-area: witches;
 }
 
 .director {
   display: block;
-  background-image: url("../../images/director.jpg");
+  background-image: url('../../images/director.jpg');
   grid-area: director;
 }
 
 .home {
   display: block;
-  background-image: url("../../images/home.jpg");
+  background-image: url('../../images/home.jpg');
   grid-area: home;
 }
 
 .music {
   display: block;
-  background-image: url("../../images/music.jpg");
+  background-image: url('../../images/music.jpg');
   grid-area: music;
 }
 
 .minimal {
   display: block;
-  background-image: url("../../images/minimal.jpg");
+  background-image: url('../../images/minimal.jpg');
   grid-area: minimal;
 }

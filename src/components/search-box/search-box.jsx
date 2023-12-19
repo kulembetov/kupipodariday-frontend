@@ -1,27 +1,27 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import { Button } from "../ui/button/button";
-import { Input } from "../ui/input/input";
-import styles from "./search-box.module.css";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { Button } from '../ui/button/button';
+import { Input } from '../ui/input/input';
+import styles from './search-box.module.css';
 
 export const SearchBox = ({
   search,
   setSearch,
-  placeholder = "Подарок 1",
-  extraClass = "",
+  placeholder = 'Подарок 1',
+  extraClass = '',
 }) => {
-  const [currentSearch, setCurrentSearch] = React.useState("");
+  const [currentSearch, setCurrentSearch] = React.useState('');
 
   const history = useHistory();
 
-  const handleChangeInput = (e) => {
+  const handleChangeInput = e => {
     setCurrentSearch(e.target.value);
   };
 
   const handleSearch = () => {
     if (currentSearch) {
       setSearch(currentSearch);
-      history.push("/search");
+      history.push('/search');
     }
   };
 

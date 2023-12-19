@@ -1,26 +1,26 @@
-import { useState, useContext } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useState, useContext } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 
-import { Input, Button } from "../ui";
+import { Input, Button } from '../ui';
 
-import { getOwnUser, loginUser } from "../../utils/api";
+import { getOwnUser, loginUser } from '../../utils/api';
 
-import { UserContext } from "../../utils/context";
+import { UserContext } from '../../utils/context';
 
 import {
   MINIMUM_USERNAME_LENGTH,
   MINIMUM_PASSWORD_LENGTH,
-} from "../../utils/constants";
+} from '../../utils/constants';
 
-import styles from "./sign-in.module.css";
+import styles from './sign-in.module.css';
 
-export const SignIn = ({ extraClass = "" }) => {
+export const SignIn = ({ extraClass = '' }) => {
   const [_userCtx, setUserCtx] = useContext(UserContext);
   const [userData, setUserData] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   });
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
   const history = useHistory();
 
@@ -28,22 +28,22 @@ export const SignIn = ({ extraClass = "" }) => {
   const passwordValid = userData.password.length >= MINIMUM_PASSWORD_LENGTH;
   const submitDisabled = !usernameValid || !passwordValid;
 
-  const onChangeInput = (e) => {
+  const onChangeInput = e => {
     setUserData({
       ...userData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const authorizeUser = async (event) => {
+  const authorizeUser = async event => {
     event.preventDefault();
-    errorMessage && setErrorMessage("");
+    errorMessage && setErrorMessage('');
     try {
       const response = await loginUser(userData.username, userData.password);
       if (response && response.access_token) {
         const user = await getOwnUser();
         setUserCtx(user);
-        history.replace({ pathname: "/gifts/line" });
+        history.replace({ pathname: '/gifts/line' });
       }
     } catch (err) {
       setErrorMessage(err.message);
@@ -59,18 +59,18 @@ export const SignIn = ({ extraClass = "" }) => {
       </h2>
       <form className={styles.form} onSubmit={authorizeUser}>
         <Input
-          name={"username"}
+          name={'username'}
           type="text"
           id={1}
           placeholder="Введите имя пользователя"
-          label="Юзернейм"
+          label="Имя пользователя"
           onChange={onChangeInput}
           extraClass="mb-16"
           minLength={MINIMUM_USERNAME_LENGTH}
           required={true}
         />
         <Input
-          name={"password"}
+          name={'password'}
           type="password"
           id={2}
           placeholder="Введите пароль"

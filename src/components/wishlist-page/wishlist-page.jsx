@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-import { GoodCard } from "../good-card";
+import { GoodCard } from '../good-card';
 
-import { Modal, Button } from "../ui";
+import { Modal, Button } from '../ui';
 
-import cancelIcon from "../../images/icons/cancel.svg";
-import trashIcon from "../../images/icons/trash-red.svg";
+import cancelIcon from '../../images/icons/cancel.svg';
+import trashIcon from '../../images/icons/trash-red.svg';
 
-import { getOwnWishes, removeWish } from "../../utils/api";
+import { getOwnWishes, removeWish } from '../../utils/api';
 
-import styles from "./wishlist-page.module.css";
+import styles from './wishlist-page.module.css';
 
-export const WishlistPage = ({ extraClass = "" }) => {
+export const WishlistPage = ({ extraClass = '' }) => {
   const [currentCardsId, setCurrentCardsId] = useState([]);
   const [data, setOwnWishes] = useState([]);
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.getItem("auth_token")) {
-      getOwnWishes().then((res) => {
+    if (sessionStorage.getItem('auth_token')) {
+      getOwnWishes().then(res => {
         setOwnWishes(res);
       });
     }
@@ -33,9 +33,9 @@ export const WishlistPage = ({ extraClass = "" }) => {
     setIsPopupOpen(false);
   };
 
-  const onCardClick = (e) => {
+  const onCardClick = e => {
     const card =
-      e.target.tagName === "ARTICLE" ? e.target : e.target.closest("article");
+      e.target.tagName === 'ARTICLE' ? e.target : e.target.closest('article');
     if (currentCardsId.indexOf(+card.id) !== -1) {
       const arr = [...currentCardsId];
       arr.splice(currentCardsId.indexOf(+card.id), 1);
@@ -51,8 +51,8 @@ export const WishlistPage = ({ extraClass = "" }) => {
   };
 
   const handleRemoveCards = () => {
-    Promise.all(currentCardsId.map((id) => removeWish(id).catch())).then(() => {
-      getOwnWishes().then((res) => {
+    Promise.all(currentCardsId.map(id => removeWish(id).catch())).then(() => {
+      getOwnWishes().then(res => {
         setCurrentCardsId([]);
         setOwnWishes(res);
         handlePopupClose();
@@ -115,7 +115,7 @@ export const WishlistPage = ({ extraClass = "" }) => {
           </div>
         </div>
       ) : (
-        ""
+        ''
       )}
       <div className={styles.cards_box}>
         {data.map(({ id, price, image, name, raised }) => {
@@ -132,7 +132,7 @@ export const WishlistPage = ({ extraClass = "" }) => {
               img={image}
               name={name}
               current={raised}
-              extraClass={withBorder ? styles.border : ""}
+              extraClass={withBorder ? styles.border : ''}
             />
           );
         })}

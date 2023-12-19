@@ -1,27 +1,27 @@
-import React from "react";
-import { useLocation, Link, useHistory } from "react-router-dom";
+import React from 'react';
+import { useLocation, Link, useHistory } from 'react-router-dom';
 
-import { Button, LoadingBox } from "../ui";
+import { Button, LoadingBox } from '../ui';
 
-import { copyWish } from "../../utils/api";
+import { copyWish } from '../../utils/api';
 
-import styles from "./good-card.module.css";
+import styles from './good-card.module.css';
 
 export const GoodCard = ({
   id,
   isOwn = false,
   price = 0,
-  name = "",
+  name = '',
   current,
   img,
   onClick,
-  extraClass = "",
+  extraClass = '',
 }) => {
   const history = useHistory();
   const { pathname } = useLocation();
 
   const handleCopyClick = () => {
-    copyWish(id).then(() => history.push("/wishlist"));
+    copyWish(id).then(() => history.push('/wishlist'));
   };
   return (
     <article
@@ -44,7 +44,7 @@ export const GoodCard = ({
           {name}
         </p>
         <LoadingBox current={current} total={price} />
-        {pathname !== "/wishlist" && (
+        {pathname !== '/wishlist' && (
           <Button
             extraClass={styles.btn}
             text="Добавить в вишлист"

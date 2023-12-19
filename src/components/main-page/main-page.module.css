@@ -66,13 +66,13 @@
   display: block;
   aspect-ratio: 13/10;
   padding: 20px 20px 0;
-  background-color: rgba(42, 44, 47, .3);
+  background-color: rgba(42, 44, 47, 0.3);
   border-radius: var(--card-border-radius);
   transition: var(--common-transition);
 }
 
 .text:hover {
-  background-color: rgba(42, 44, 47, .6);
+  background-color: rgba(42, 44, 47, 0.6);
 }
 
 .card {
@@ -108,7 +108,7 @@
 }
 
 .wishes_text {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .checkbox {
@@ -127,7 +127,7 @@
 
 .error {
   color: red;
-  opacity: .8;
+  opacity: 0.8;
   margin-bottom: 12px;
 }
 
@@ -143,5 +143,5 @@
 }
 
 .remove_btn:hover {
-  opacity: .7;
+  opacity: 0.7;
 }

@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useContext } from 'react';
 
-import { GoodCard } from "../good-card";
+import { GoodCard } from '../good-card';
 
-import { UserContext } from "../../utils/context";
+import { UserContext } from '../../utils/context';
 
-import styles from "./main-page.module.css";
+import styles from './main-page.module.css';
 
 export const CardListView = ({
   lastCards,
@@ -50,7 +50,7 @@ export const CardListView = ({
 const GoodCardList = ({ cards, isLogin, ownedIds }) => {
   const [user] = useContext(UserContext);
 
-  return cards.map((cardInfo) => {
+  return cards.map(cardInfo => {
     const { name, price, raised, image, id } = cardInfo;
     const key = `${user.id}${id}`;
     const isOwned = ownedIds.includes(id);

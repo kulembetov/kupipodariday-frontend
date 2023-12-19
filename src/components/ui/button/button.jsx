@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
-import styles from "./button.module.css";
+import styles from './button.module.css';
 
 export const Button = ({
-  text = "",
-  extraClass = "",
-  kind = "primary",
+  text = '',
+  extraClass = '',
+  kind = 'primary',
   ...rest
 }) => {
   return (

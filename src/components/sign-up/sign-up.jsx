@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useContext, useEffect, useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
 
-import { Input, Button, Textarea } from "../ui";
+import { Input, Button, Textarea } from '../ui';
 
-import { UserContext } from "../../utils/context";
-import { getOwnUser, loginUser, registerUser } from "../../utils/api";
+import { UserContext } from '../../utils/context';
+import { getOwnUser, loginUser, registerUser } from '../../utils/api';
 
 import {
   MINIMUM_PASSWORD_LENGTH,
@@ -13,27 +13,27 @@ import {
   EMAIL_REGULAR,
   URL_REGULAR,
   MAXIMUM_USERNAME_LENGTH,
-} from "../../utils/constants";
+} from '../../utils/constants';
 
-import styles from "./sign-up.module.css";
+import styles from './sign-up.module.css';
 
-export const SignUp = ({ extraClass = "" }) => {
+export const SignUp = ({ extraClass = '' }) => {
   const [_user, setUser] = useContext(UserContext);
   const [userData, setUserData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    about: "",
-    avatar: "",
+    username: '',
+    email: '',
+    password: '',
+    about: '',
+    avatar: '',
   });
   const [step, setStep] = useState(1);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [stepOneDisabled, setStepOneDisabled] = useState(true);
   const [stepTwoDisabled, setStepTwoDisabled] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
-    errorMessage && setErrorMessage("");
+    errorMessage && setErrorMessage('');
     const usernameValid =
       userData.username.length >= MINIMUM_USERNAME_LENGTH &&
       userData.username.length <= MAXIMUM_USERNAME_LENGTH;
@@ -48,7 +48,7 @@ export const SignUp = ({ extraClass = "" }) => {
     setStepTwoDisabled(!descriptionValid || !avatarValid);
   }, [step, userData]);
 
-  const onChangeInput = (e) => {
+  const onChangeInput = e => {
     const name = e.target.name;
     const value = e.target.value;
     setUserData({
@@ -64,7 +64,7 @@ export const SignUp = ({ extraClass = "" }) => {
       setStep(2);
     } else {
       const { avatar, ...rest } = userData;
-      errorMessage && setErrorMessage("");
+      errorMessage && setErrorMessage('');
       try {
         if (avatar) {
           await registerUser(userData);
@@ -87,11 +87,11 @@ export const SignUp = ({ extraClass = "" }) => {
 
           if (userDto.id) {
             setUser({ ...userDto });
-            history.replace({ pathname: "/" });
+            history.replace({ pathname: '/' });
           }
         }
       } catch (_err) {
-        history.replace({ pathname: "/signin" });
+        history.replace({ pathname: '/signin' });
       }
     }
   };
@@ -101,7 +101,7 @@ export const SignUp = ({ extraClass = "" }) => {
       <h2
         className={`text text_type_h2 text_color_primary mb-16 ${styles.title}`}
       >
-        {`Регистрация ${step === 1 ? "1/2" : "2/2"}`}
+        {`Регистрация ${step === 1 ? '1/2' : '2/2'}`}
       </h2>
       <form className={styles.form}>
         {step === 1 ? (
@@ -124,7 +124,7 @@ export const SignUp = ({ extraClass = "" }) => {
         <Button
           type="button"
           kind="secondary"
-          text={`${step === 1 ? "Далее" : "Зарегистрироваться"}`}
+          text={`${step === 1 ? 'Далее' : 'Зарегистрироваться'}`}
           disabled={step === 1 ? stepOneDisabled : stepTwoDisabled}
           extraClass={styles.btn}
           onClick={handleSubmit}
@@ -154,8 +154,8 @@ const StepOne = ({ onChangeInput, data }) => {
         name="username"
         type="username"
         id={1}
-        placeholder="Придумайте юзернейм"
-        label="Юзернейм"
+        placeholder="Придумайте имя пользователя"
+        label="Имя пользователя"
         value={data.username}
         onChange={onChangeInput}
         extraClass="mb-16"

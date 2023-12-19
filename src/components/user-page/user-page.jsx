@@ -1,20 +1,20 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { ButtonReturn } from "../ui";
-import { GoodCard } from "../good-card";
+import { ButtonReturn } from '../ui';
+import { GoodCard } from '../good-card';
 
 import {
   getAnotherUser,
   getAnotherUserWishes,
   getOwnWishes,
-} from "../../utils/api";
+} from '../../utils/api';
 
-import { findOwnedIds } from "../../utils/functions";
+import { findOwnedIds } from '../../utils/functions';
 
-import styles from "./user-page.module.css";
+import styles from './user-page.module.css';
 
-export const UserPage = ({ extraClass = "" }) => {
+export const UserPage = ({ extraClass = '' }) => {
   const [anotherUser, setAnotherUser] = useState({});
   const [anotherUserWishes, setAnotherUserWishes] = useState([]);
   const [myWishes, setMyWishes] = useState([]);
@@ -29,7 +29,7 @@ export const UserPage = ({ extraClass = "" }) => {
       getAnotherUserWishes(username),
       getAnotherUser(username),
       getOwnWishes(),
-    ]).then((values) => {
+    ]).then(values => {
       const [wishes, profileInfo, myWishes] = values;
       setAnotherUser(profileInfo);
       setAnotherUserWishes(wishes);
@@ -49,7 +49,7 @@ export const UserPage = ({ extraClass = "" }) => {
       <p
         className={`text text_type_main text_color_primary mb-16 ${styles.description}`}
       >
-        {`Обо мне: ${anotherUser?.about || "ничего неизвестно"}`}
+        {`Обо мне: ${anotherUser?.about || 'ничего неизвестно'}`}
       </p>
       <div className={styles.cards}>
         <h2 className={`text text_type_h2 text_color_primary ${styles.title}`}>

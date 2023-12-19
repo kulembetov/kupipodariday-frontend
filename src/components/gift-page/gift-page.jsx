@@ -1,30 +1,30 @@
-import { useState, useEffect } from "react";
-import { NavLink, useParams, useHistory } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { NavLink, useParams, useHistory } from 'react-router-dom';
 
-import { Button, ButtonReturn, LoadingBox, Modal, Input } from "../ui";
-import { UserSupportedCard } from "../user-supported-card";
+import { Button, ButtonReturn, LoadingBox, Modal, Input } from '../ui';
+import { UserSupportedCard } from '../user-supported-card';
 
-import { priceArr } from "../../utils/constants";
+import { priceArr } from '../../utils/constants';
 
-import { addOffer, getCard, copyWish, getOwnWishes } from "../../utils/api";
+import { addOffer, getCard, copyWish, getOwnWishes } from '../../utils/api';
 
-import styles from "./gift-page.module.css";
+import styles from './gift-page.module.css';
 
-export const GiftPage = ({ extraClass = "" }) => {
+export const GiftPage = ({ extraClass = '' }) => {
   const history = useHistory();
   const { id } = useParams();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isAddToWishDisabled, setIsAddToWishDisabled] = useState(false);
   const [currentSupportedBtn, setCurrentSupportedBtn] = useState(100);
-  const [anotherSum, setAnotherSum] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [anotherSum, setAnotherSum] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [wishData, setWishData] = useState({});
   useEffect(() => {
-    if (sessionStorage.getItem("auth_token")) {
+    if (sessionStorage.getItem('auth_token')) {
       Promise.all([getCard(id), getOwnWishes()]).then(([card, wishlist]) => {
         setWishData(card);
-        const goodInMyWish = wishlist.find((item) => item.id === card.id);
+        const goodInMyWish = wishlist.find(item => item.id === card.id);
         if (goodInMyWish) {
           setIsAddToWishDisabled(true);
         }
@@ -39,7 +39,7 @@ export const GiftPage = ({ extraClass = "" }) => {
   };
 
   const handleSupportClick = () => {
-    errorMessage && setErrorMessage("");
+    errorMessage && setErrorMessage('');
     const amount = +anotherSum || currentSupportedBtn;
     addOffer({
       itemId: wishData.id,
@@ -48,34 +48,34 @@ export const GiftPage = ({ extraClass = "" }) => {
     })
       .then(() => {
         handlePopupClose();
-        getCard(id).then((res) => {
+        getCard(id).then(res => {
           setWishData(res);
         });
       })
-      .catch((err) => {
+      .catch(err => {
         setErrorMessage(err.message);
       });
   };
 
   const handleGoToShop = () => {
-    window.open(wishData.link, "_blank");
+    window.open(wishData.link, '_blank');
   };
 
   const handleCopyClick = () => {
-    copyWish(wishData.id).then(() => history.push("/wishlist"));
+    copyWish(wishData.id).then(() => history.push('/wishlist'));
   };
 
   const handlePopupClose = () => {
     setIsPopupOpen(false);
   };
 
-  const handleSupportedBtnsClick = (e) => {
-    const id = +e.target.closest("button").getAttribute("id");
+  const handleSupportedBtnsClick = e => {
+    const id = +e.target.closest('button').getAttribute('id');
     setCurrentSupportedBtn(id);
-    setAnotherSum("");
+    setAnotherSum('');
   };
 
-  const handleChangeInput = (e) => {
+  const handleChangeInput = e => {
     const sum = e.target.value;
     setAnotherSum(sum);
     setCurrentSupportedBtn(+sum);
@@ -90,7 +90,7 @@ export const GiftPage = ({ extraClass = "" }) => {
         <div className={styles.gift_data}>
           <h2 className="text text_type_h1 mb-16">{`${wishData.price} руб.`}</h2>
 
-          <p className="text text_type_main" style={{ maxWidth: "75%" }}>
+          <p className="text text_type_main" style={{ maxWidth: '75%' }}>
             {`Добавлено ${new Date(
               wishData.createdAt
             ).toLocaleDateString()} пользователем `}
@@ -98,12 +98,12 @@ export const GiftPage = ({ extraClass = "" }) => {
               to={`/users/${wishData?.owner?.username}`}
               className={`text text_type_main text_color_primary ${styles.link}`}
             >
-              {`${wishData?.owner?.username} ${"\u{2197}"}`}
+              {`${wishData?.owner?.username} ${'\u{2197}'}`}
             </NavLink>
           </p>
           <p
             className="text text_type_main"
-            style={{ maxWidth: "75%" }}
+            style={{ maxWidth: '75%' }}
           >{`Описание: ${wishData.description}`}</p>
           <LoadingBox
             current={wishData.raised}
@@ -170,8 +170,8 @@ export const GiftPage = ({ extraClass = "" }) => {
                     kind={
                       currentSupportedBtn === item ||
                       currentSupportedBtn === anotherSum
-                        ? "primary"
-                        : "support"
+                        ? 'primary'
+                        : 'support'
                     }
                     onClick={handleSupportedBtnsClick}
                   />

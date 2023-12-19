@@ -1,19 +1,19 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import { Input, Button } from "../ui";
+import { Input, Button } from '../ui';
 
-import { queryUser } from "../../utils/api";
+import { queryUser } from '../../utils/api';
 
-import styles from "./search-bar.module.css";
+import styles from './search-bar.module.css';
 
 export const SearchBar = ({ query, changeQuery, setQueryHits }) => {
   const history = useHistory();
 
-  const queryForUsers = (event) => {
+  const queryForUsers = event => {
     event.preventDefault();
-    queryUser(query).then((hits) => setQueryHits({ query, hits }));
-    history.push("/search");
+    queryUser(query).then(hits => setQueryHits({ query, hits }));
+    history.push('/search');
   };
 
   return (

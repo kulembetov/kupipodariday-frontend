@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import styles from "./select.module.css";
+import styles from './select.module.css';
 
 export const Select = ({
-  extraClass = "",
-  extraSelectClass = "",
+  extraClass = '',
+  extraSelectClass = '',
   id,
   error,
   label,
@@ -26,7 +26,7 @@ export const Select = ({
         className={`${styles.select} text text_type_main text_color_primary ${extraSelectClass}`}
         {...rest}
       >
-        {options.map((option) => {
+        {options.map(option => {
           return (
             <option key={option.id} value={option.name}>
               {option.name}

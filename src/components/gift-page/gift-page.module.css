@@ -50,7 +50,7 @@
 }
 
 .link:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .subtitle_box {
@@ -97,7 +97,7 @@
 
 .error {
   color: red;
-  opacity: .8;
+  opacity: 0.8;
   margin-top: 10px;
   text-align: center;
 }
